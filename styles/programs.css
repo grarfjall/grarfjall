@@ -1,0 +1,72 @@
+﻿/*
+Author: Jared Lancaster
+Date: 02/25/2016
+*/
+
+table{
+	width: 100%;
+	font-family: Trebuchet MS, Arial, Verdana, sans-serif;
+	border-collapse: collapse;
+}
+
+table caption{
+	caption-side: bottom;
+	text-align: right;
+	font-size: 0.8em;
+}
+
+th, tr, td{
+	font-size: 0.7em;
+	vertical-align: top;
+}
+
+td{
+	border-left: 1px solid gray;
+	border-bottom: 1px solid gray;
+}
+
+th{
+	border-bottom: 1px solid gray;
+}
+
+tr{
+	height: 25px;
+}
+
+thead{
+	color: white;
+	background-color: rgb(105, 177, 60);
+}
+
+.timeColumn{
+	width: 7%;
+	background-image: url("../images/left.jpg"); 
+	background-repeat: repeat-y;
+	background-position: left;
+	background-color: rgb(215, 205, 151);
+}
+
+.daysColumn{
+	width: 13%;
+}
+
+.lastColumn{
+	width: 13%;
+	background-image: url("../images/right.jpg");
+	background-repeat: repeat-y;
+	background-position: right;
+}
+
+#topLeft{
+	background-image: url("../images/topleft.jpg");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-color: rgb(105, 177, 60);
+}
+
+#topRight{
+	background-image: url("../images/topright.jpg");
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-color: rgb(105, 177, 60);
+}
