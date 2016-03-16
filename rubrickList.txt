@@ -1,0 +1,44 @@
+This is a list to help locate the elements required within the rubrick.
+	-Jared Lancaster
+
+
+1.Pertinent Images: Displayed as a header across every page, a picture my sister took on a hike.
+
+
+2.Logo: Displayed on header on left side: green fish. Also a link back to the splash page.
+
+
+3.Unified Theme: Colors of divs shared across pages, same layout on all pages.
+
+
+4.One ordered and One unordered list: Ordered list within table of "Education" page, unordered list within the navigation bar on all pages.
+
+
+5.Block Quote: On the "Work Experience" page.
+
+
+6.Horizontal Line: displays on all pages just below header picture.
+
+
+7.External links: All school names on "Education" page link to their websites.
+
+
+8.HTML 4 Validation: I assumed you meant XHTML 1.0, it validates and the link is at the bottom of the page.
+
+
+9.Classic layout: all pages have a 2-column layout.
+
+
+10.Responsive Media queries: Within the css page, set for 408px, 850px, and 1280px.
+
+
+11.At least one table: tables used on Education and Work Experience pages.
+
+
+12. Professional looking: High-res picture header, clean layout, information clear to read.
+
+
+13. At least 3 pages: contains a splash/home page, Work page, Education page, and "hobby" page.
+
+
+14.Only one css file for all html files: yes, "projstyle.css" file included.
