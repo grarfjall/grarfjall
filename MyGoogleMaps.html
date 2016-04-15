@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+		var counter;	
+	
+		var marker1;
+		var marker2;
+		var	marker3;
+		var	marker4;
+		var	marker5;
+		var	marker6;
+			
+		function initMap(){
+		
+			var myLatLng = {lat: 59.911491, lng: 10.757933};
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+			  zoom: 6,
+			  center: {lat: 59.431322, lng: 10.330855}
+			});
+			
+			marker1 = new google.maps.Marker({
+			  //freebie, first eye, Oslo - circle1
+			  position: myLatLng,
+			  map: map,
+			  title: 'Oslo'
+			});
+			
+			marker2 = new google.maps.Marker({
+				//second eye, Bergen - circle2
+				position: {lat: 60.3913, lng: 5.3221},
+				map: map,
+				title: 'Kongsberg'
+			});
+			
+			marker3 = new google.maps.Marker({
+				//Stavanger - rect 2
+				position: {lat: 58.9700, lng: 5.7331},
+				map: map,
+				title: 'Skien'
+			});
+			
+			marker4 = new google.maps.Marker({
+				//Kristiansand - circle3
+				position: {lat: 58.1599, lng: 8.0182},
+				map: map,
+				title: 'Larvik'
+			});
+			
+			marker5 = new google.maps.Marker({
+				//Fredrikstad, mouth - rect1
+				position: {lat: 59.215249, lng: 10.925692},
+				map: map,
+				title: 'Fredrikstad'
+			});
+			
+			marker6 = new google.maps.Marker({
+				//Hamar - circle4
+				position: {lat: 60.7945, lng: 11.0680},
+				map: map,
+				title: 'Moss'
+			});
+			
+			marker1.setVisible(false);
+			marker2.setVisible(false);
+			marker3.setVisible(false);
+			marker4.setVisible(false);
+			marker5.setVisible(false);
+			marker6.setVisible(false);
+			
+			//correct circle
+			var circle1 = new google.maps.Circle({
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				center: {lat: 59.766083, lng: 6.835578},
+				radius: 10000
+			});
+			
+			//correct circle
+			var circle2 = new google.maps.Circle({
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				center: {lat: 59.766083, lng: 8.468705},
+				radius: 10000
+			});
+			
+			//correct rectangle
+		    var rect1 = new google.maps.Rectangle({
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				bounds: {
+				  north: 59.2,
+				  south: 59,
+				  east: 8.5,
+				  west: 6.6
+				}
+			});
+			
+			//incorrect circle
+			var circle3 = new google.maps.Circle({
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				center: {lat: 59, lng: 6},
+				radius: 10000
+			});
+			
+			//incorrect circle
+			var circle4 = new google.maps.Circle({
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				center: {lat: 60, lng: 9},
+				radius: 10000
+			});
+			
+			//incorrect rectangle
+			 var rect2 = new google.maps.Rectangle({
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				bounds: {
+				  north: 60,
+				  south: 60.2,
+				  east: 8.5,
+				  west: 6.6
+				}
+			});
+			
+			function isWon()
+			{
+				if(circle1.getVisible() == true && circle2.getVisible() == true && rect1.getVisible() == true && rect2.getVisible() == false && circle3.getVisible() == false && circle4.getVisible() == false)
+				{
+					clearInterval(counter);
+					alert("You Win!");
+				}
+			}
+			
+			rect1.setVisible(false);
+			rect2.setVisible(false);
+			circle1.setVisible(false);
+			circle2.setVisible(false);
+			circle3.setVisible(false);
+			circle4.setVisible(false);
+			
+			marker1.addListener('click', function tvis1(){
+				if(circle1.getVisible() == false)
+				{
+					circle1.setVisible(true);
+				}
+				else
+				{
+					circle1.setVisible(false);
+				}
+				isWon();
+			});
+			
+			marker2.addListener('click', function tvis2(){ //circle2
+				if(circle2.getVisible() == false)
+				{
+					circle2.setVisible(true);
+				}
+				else
+				{
+					circle2.setVisible(false);
+				}
+				
+				isWon();
+			});
+			
+			marker3.addListener('click', function tvis3(){ //rect2
+				if(rect2.getVisible() == false)
+				{
+					rect2.setVisible(true);
+				}
+				else
+				{
+					rect2.setVisible(false);
+				}
+				
+				isWon();
+			});
+			marker4.addListener('click', function tvis4(){ //circle3
+				if(circle3.getVisible() == false)
+				{
+					circle3.setVisible(true);
+				}
+				else
+				{
+					circle3.setVisible(false);
+				}
+				
+				isWon();
+			});
+			marker5.addListener('click', function tvis5(){ //rect1
+				if(rect1.getVisible() == false)
+				{
+					rect1.setVisible(true);
+				}
+				else
+				{
+					rect1.setVisible(false);
+				}
+				
+				isWon();
+			});
+			marker6.addListener('click', function tvis6(){ //circle4
+				if(circle4.getVisible() == false)
+				{
+					circle4.setVisible(true);
+				}
+				else
+				{
+					circle4.setVisible(false);
+				}
+				
+				isWon();
+			});
+			
+		}	
+		
+		function startGame(){
+		
+			marker1.setVisible(true);
+			marker2.setVisible(true);
+			marker3.setVisible(true);
+			marker4.setVisible(true);
+			marker5.setVisible(true);
+			marker6.setVisible(true);
+			
+		//timer segment
+			var count = 60;
+			counter = setInterval(startTimer, 1000);
+			
+			function startTimer()
+			{
+				
+				count = count-1;
+				
+				document.getElementById("timer").innerHTML = count;
+				
+				if(count <= 0)
+				{
+					clearInterval(counter);
+					alert("You lose!");
+					return;
+				}	
+			}
+		}
+</script>
+	
+<script async defer
+    src="http://maps.google.com/maps/api/js?callback=initMap">
+</script>
+
+<style>
+	#explanation
+	{
+		margin: auto;
+		width: 500px;
+		height: 100px;
+		border: 3px solid black;
+		padding: 3px;
+	}
+	#button
+	{
+		margin: auto;
+		width: 500px;
+		height: 30px;
+	}
+	#startButton
+	{
+		position: relative;
+		top: 0px;
+		right: -225px;
+	}
+	#instructions
+	{
+		margin: auto;
+		width: 500px;
+		height: 100px;
+		border: 3px solid black;
+		padding: 3px;
+	}
+	#map 
+	{
+		margin: auto;
+		width: 500px;
+		height: 500px;
+		border: 3px solid black;
+		padding: 0px;
+	}
+	#timerSlot
+	{
+		margin: auto;
+		width: 30px;
+		height: 30px;
+		border: 1px solid black;
+	}
+	#timer
+	{
+		padding: 5px;
+	}
+</style>
+</head>
+<body>
+	<div id="instructions">
+	<p>When you click the "start" button, 6 points will appear on the map and a timer will start ticking down. 
+		Clicking each point will reveal a shape. Use the shapes to draw a smiley face within the time limit!</p>
+	</div>
+	
+	<div id="map"></div>
+	<div id="button"><button onclick = "startGame()" type="button" id="startButton">Start</button></div>
+	<div id="timerSlot"><span id="timer">60</span></div>
+	<div id="explanation"><p> I would like to visit Norway and take a tour of the country. I am part Norse, and I think the country is among
+		the most beautiful in the world, with its gorgeous green mountains, sweeping glacial valleys, and incredible fjords.</p></div>
+
+	
+</body>
+</html>
