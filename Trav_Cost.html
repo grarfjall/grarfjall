@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+
+  <title>Zantiu Braun-Booking</title>
+  <meta name="description" content="ZB bookings"/>
+
+  <link rel="stylesheet" type="text/css" href="travStyle.css"/>
+<script>
+window.onload = initForm;
+
+function initForm()
+{
+	document.getElementById("planSelect").onchange = subCalc;
+	document.getElementById("planSelect").onchange = taxCalc;
+	document.getElementById("planSelect").onchange = totalCalc;
+}
+
+function destination()
+{
+	var dindex = document.getElementById("planSelect").selectedIndex;
+	var destCost = parseFloat(document.getElementById("planSelect").options[dindex].value);
+	return destCost;
+}
+
+function subCalc()
+{
+	var passengers = document.getElementById("passCount").value;
+	if (isNaN(passengers))
+	{
+		alert("Please enter a number");
+		passengers = 0;
+		passengers.focus;
+	}
+	var subTot = destination()*passengers;
+	document.getElementById('subTotal').value = subTot;
+	
+	return subTot;
+}
+
+function taxCalc()
+{
+	var taxTotal = subCalc()*(.16);
+	document.getElementById('tax').value = taxTotal;
+	return taxTotal;
+}
+
+function totalCalc()
+{
+	var total = subCalc() + taxCalc();
+	document.getElementById('total').value = total;
+	return total;
+}
+</script>
+</head>
+
+<body class='background'>
+<div class="Titles"><h1>Booking</h1></div>
+
+ <div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+	<a href='Trav_Dest.html'>Destinations</a>
+	<a href='Trav_Accom.html'>Accomodations</a>
+	<a href='Trav_Cost.html'>Booking</a>
+	<a href='Trav_Kids.html'>Kids</a>
+  </div>
+</div>
+
+
+<div class="topBar">
+	<ul class='navList'>
+		<li><a href='Trav_Splash.html'>Home</a></li>
+		<li><a href='Trav_Dest.html'>Destinations</a></li>
+		<li><a href='Trav_Accom.html'>Accomodations</a></li>
+		<li>Booking</li>
+		<li><a href='Trav_Kids.html'>Kids</a></li>
+	</ul>
+</div>
+<div id='tableDiv'>
+<table>
+	<tr>
+		<td style='color:white;'>Passengers</td>
+		<td style='color:white;'>Destination</td>
+		<td style='color:white;'>Subtotal</td>
+	</tr>
+	<tr>
+			<td>
+				<input name='passengers' id='passCount' tabindex='2' value='0'/>
+			</td>
+			
+			<td>
+				<select id="planSelect">
+					<option value='0.00'>Choose Your Destination...</option>
+					<option value='5000000'>Mars</option>
+					<option value='13000000'>Jupiter</option>
+					<option value='15000000'>Saturn</option>
+				</select>
+			</td>
+			
+			<td>
+				<input name='subTotal' id='subTotal' readonly='readonly' value="0.00"/>
+			</td>
+	</tr>
+	<tr>
+		<td style='color: white' colspan='2'>UN Orbiting Body Tax 16%</td>
+		<td colspan='3'>
+			<input name='tax' id='tax' readonly='readonly' value="0.00"/>
+		</td>
+	</tr>
+	<tr>
+
+		<td style='color: white' colspan='2'>Total</td>
+		<td colspan='3'>
+			<input name='total' id='total' readonly='readonly' value="0.00"/>
+		</td>
+	</tr>
+	
+</table>
+</div>
+<div id='faq'>
+	<p>&#8226; Q: Why aren't there different rates for children?</p>
+	<p>A: There are several reasons for this. A large portion of the cost covers the operation of the "lifter", the vehicle that
+	we use to break atmosphere. While children do weigh less than adults, they still require their own g-couch, and as such their 
+	lifter fee is the same. Similarly, children are alloted the same shipboard resources as adults, so their ship billing is the 
+	same.
+	</p>
+	<p>&#8226; Q: What is the UN Orbiting Body Tax?</p>
+	<p>A: The UN Orbiting Body Tax was implemented several years ago to fund environmental programs to counter the effects of 
+	spaceflight on the local environment and local Terran space. The tax is applied to craft exiting the atmosphere, and it
+	applies doubly to launches or craft that leave debris in Earth orbit. Fortunately, our lifters, landers, and spacecraft
+	are all built to be reusable!
+	</p>
+</div>
+
+<div class='footer'>Authored by Jared Lancaster <script>document.write(new Date().getFullYear())</script></div>
+</body>
+</html>

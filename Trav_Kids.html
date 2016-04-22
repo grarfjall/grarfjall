@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+
+  <title>Zantiu Braun-Kids</title>
+  <meta name="description" content="ZB Kids"/>
+
+  <link rel="stylesheet" type="text/css" href="travStyle.css"/>
+
+<script type="text/javascript">
+function clearCanvas(){
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0,0,600,600);
+	ctx.fillstyle = "rgba(24, 32, 52, 0.5)";
+}
+
+function drawShape(event){
+	var x = event.clientX;
+	var y = event.clientY;
+	
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	var star = document.getElementById("star");
+	var mars = document.getElementById("mars");
+	var jupiter = document.getElementById("jupiter");
+	var space = document.getElementById("space");
+	
+	if (star.checked == true && mars.checked == false && jupiter.checked == false && space.checked == false)
+	{
+		ctx.beginPath();
+		ctx.arc(x,y,5,0,2*Math.PI);
+		ctx.fillStyle = "white";
+		ctx.fill();
+	}
+	else if (mars.checked == true)
+	{
+		ctx.beginPath();
+		ctx.arc(x,y,25,0,2*Math.PI);
+		ctx.fillStyle = "red";
+		ctx.fill();
+
+	}
+	else if (space.checked == true)
+	{
+		ctx.beginPath();
+		ctx.rect(x,y,100,100);
+		ctx.fillStyle = "black";
+		ctx.fill();
+
+	}
+	else if(jupiter.checked == true)
+	{
+		ctx.beginPath();
+		ctx.arc(x,y,50,0,2*Math.PI);
+		ctx.fillStyle = "orange";
+		ctx.fill();
+	}
+	
+}
+</script>
+</head>
+
+<body class='background'>
+<div class="Titles"><h1>Kid's Corner</h1></div>
+
+<div class="topBar">
+	<ul class='navList'>
+		<li><a href='Trav_Splash.html'>Home</a></li>
+		<li><a href='Trav_Dest.html'>Destinations</a></li>
+		<li><a href='Trav_Accom.html'>Accomodations</a></li>
+		<li><a href='Trav_Cost.html'>Booking</a></li>
+		<li>Kids</li>
+	</ul>
+</div>
+
+<div id='canvasWrapper'>
+	<canvas onclick="drawShape(event)" id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
+	Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	
+<form action="">
+  <input type="radio" id="star" name="shape" value="circle" checked="checked">Star<br>
+  <input type="radio" id="mars" name="shape" value="square">Mars<br>
+  <input type="radio" id="space" name="shape" value="square">Space<br>
+  <input type="radio" id="jupiter" name="shape" value="triangle">Jupiter
+</form>
+
+<button type="button" onclick="clearCanvas()">Clear Canvas</button>
+</div>
+<div id='kidText' style='color: white;'>
+	<p>Try to draw space! Remember to add stars and planets!</p>
+</div>
+<div class='footer'>Authored by Jared Lancaster <script>document.write(new Date().getFullYear())</script></div>
+</body>
+</html>

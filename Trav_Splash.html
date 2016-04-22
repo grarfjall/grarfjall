@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+
+  <title>Interstellar Travel Agency</title>
+  <meta name="description" content="ITA Homepage"/>
+
+  <link rel="stylesheet" type="text/css" href="travStyle.css"/>
+  <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!--call jquery for fadeTo-->
+  
+	  <script>
+		<!--jquery for fadeTo-->
+			$(document).ready(function(){
+				$('#logoSplash').hide(0).delay(500).fadeIn(3000);
+				$('#navDiv').hide(0).delay(3000).fadeIn(2000);
+			});
+
+	  </script>
+</head>
+
+<body class="background">
+
+<div><img src="images/zb_logo.png" id="logoSplash" alt="ZB Ltd"</div>
+
+<div class="dropdown">
+	<button class='dropButton'>Menu</button>
+	<div class='dropCont'>
+		<a href='Trav_Dest.html'>Destinations</a>
+		<a href='Trav_Accom.html'>Accomodations</a>
+		<a href='Trav_Cost.html'>Booking</a>
+		<a href='Trav_Kids.html'>Kids</a>
+	</div>
+</div>
+
+<div id="navDiv">
+<ul class='navList'>
+	<li><a href='Trav_Dest.html'>Destinations</a></li>
+	<li><a href='Trav_Accom.html'>Accomodations</a></li>
+	<li><a href='Trav_Cost.html'>Booking</a></li>
+	<li><a href='Trav_Kids.html'>Kids</a></li>
+</ul>
+</div>
+
+<div class='footer'>Authored by Jared Lancaster <script>document.write(new Date().getFullYear())</script></div>
+</body>
+</html>
