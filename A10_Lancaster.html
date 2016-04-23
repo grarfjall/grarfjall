@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Div Game</title>
+<style>
+#container {
+	width: 450px;
+	height: 400px;
+	border-style: solid;
+	border-width: 5px;
+	position: relative;
+	background-color: #00ff99;
+}
+
+#innerDiv {
+	width: 150px;
+	height: 50px;
+	border-style: solid;
+	border-width: 2.5px;
+	border-color: green;
+	position: absolute;
+	background-color: #00ffff;
+}
+
+</style>
+
+<script type='text/javascript'>
+window.onload = fall;
+document.onkeydown = move;
+
+var innerTop = 0;
+var innerLeft = 0;
+
+function reset() {
+location.reload();
+}
+function scoreRequest() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("highScore").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", " http://icarus.cs.weber.edu/~rball/ajaxHighScore.php?q=highScore", true);
+  xhttp.send();
+}
+
+function move(e) {
+	
+	var inner = document.getElementById('innerDiv');
+	var container = document.getElementById('container');
+
+	if(e.keyCode == 39) {
+		innerLeft += 6;
+		inner.style.left = innerLeft + 'px';
+		if(innerLeft >= 400){
+			innerLeft -= 7;
+		}
+	}
+	if(e.keyCode == 37) {
+		innerLeft -= 6;
+		inner.style.left = innerLeft + 'px';
+		if(innerLeft <= 150){
+			innerLeft += 7;
+		}
+	}
+	if(e.keyCode == 40) {
+		innerTop += 6;
+		inner.style.top = innerTop + 'px';
+		if(innerTop <= 150){
+			innerTop -= 7;
+		}
+	}
+	if(e.keyCode == 38) {
+		innerTop -= 6;
+		inner.style.top = innerTop + 'px';
+	}
+}
+
+function fall() {
+	var id = setInterval(frame, 10);
+	var inner = document.getElementById('innerDiv');
+	var container = document.getElementById('container');
+	
+	function frame() {
+		if (innerTop >= 345) {
+			clearInterval(id);
+			alert('you lose');
+		}
+		else {
+			innerTop++;
+			inner.style.top = innerTop + 'px';
+		}
+	}
+}
+
+</script>
+</head>
+
+<body>
+
+<div id='container'>
+	<div id='innerDiv'>
+	</div>
+</div>
+<button id='highScore' onClick='scoreRequest()'>High Score</button>
+
+<button id='reset' onClick='reset()'>Reset</button>
+
+<div id="timerSlot"><span id="timer">60</span></div>
+<p id='highScore'></p>
+</body>
+
+</html> 
